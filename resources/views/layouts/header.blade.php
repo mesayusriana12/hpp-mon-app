@@ -12,15 +12,21 @@
 <ul class="c-header-nav mfs-auto">
 </ul>
 <ul class="c-header-nav">
-    <li class="c-header-nav-item dropdown">
+    <li class="c-header-nav-item mr-4">
+        <span class="badge {{(Auth::user()->role_id == 1 ? 'badge-danger' : 'badge-primary')}}" style="cursor: default">{{(Auth::user()->role_id == 1 ? 'Admin' : 'Staff')}}</span>
+    </li>
+</ul>
+<ul class="c-header-nav">
+    <li class="c-header-nav-item dropdown mr-4">
         <a class="c-header-nav-link" data-toggle="dropdown" href="#" role="button"
-           aria-haspopup="true" aria-expanded="false">
+            aria-haspopup="true" aria-expanded="false">
             <div class="c-avatar">
-                <img class="c-avatar-img" src="https://infyom.com/images/logo/blue_logo_150x150.png" alt="">
+                <img class="c-avatar-img" src="{{asset('images/profile_picture/' . Auth::user()->profile_picture)}}" alt="pp">
             </div>
+            <i class="cil-caret-bottom ml-2 "></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right pt-0">
-            <div class="dropdown-header bg-light py-2"><strong>Account</strong></div>
+            <div class="dropdown-header bg-light py-2"><strong>{{Auth::user()->fullname}}</strong></div>
             <a class="dropdown-item" href="#">
                 <i class="c-icon mfe-2 cil-user"></i>Profile
             </a>

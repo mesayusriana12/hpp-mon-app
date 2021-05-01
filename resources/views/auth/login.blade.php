@@ -36,10 +36,10 @@
                                       <i class="cil-user"></i>
                                     </span>
                                 </div>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                       name="email" value="{{ old('email') }}"
-                                       placeholder="Email">
-                                @error('email')
+                                <input type="text" class="form-control @error('username') is-invalid @enderror"
+                                       name="username" value="{{ old('username') }}"
+                                       placeholder="Username">
+                                @error('username')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -67,15 +67,6 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
-                </div>
-                <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
-                    <div class="card-body text-center">
-                        <div>
-                            <h2>Sign up</h2>
-                            <p>Sign in to start your session</p>
-                            <a class="btn btn-lg btn-outline-light mt-3" href="{{ route('register') }}">Register Now!</a>
-                        </div>
                     </div>
                 </div>
             </div>

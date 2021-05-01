@@ -1,9 +1,9 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
     <div class="c-sidebar-brand d-md-down-none">
-        <img src="https://infyom.com/images/logo/logo_236w.png" width="46"
-             class="c-sidebar-brand-full" alt="Brand Logo">
-        <img src="https://infyom.com/images/logo/blue_logo_150x150.png" width="46" height="46"
-             class="c-sidebar-brand-minimized" alt="Brand Logo">
+        <img src="{{asset('/images/logo/HPP_Monitor-logo.png')}}" width="110" class="c-sidebar-brand-full"
+            alt="Logo HPP-Mon">
+        <img src="{{asset('/images/logo/HPP_Monitor-logo-mini.png')}}" width="33"
+            class="c-sidebar-brand-minimized" alt="HPP-Mon">
     </div>
     <ul class="c-sidebar-nav">
         @include('layouts.menu')
@@ -15,5 +15,5 @@
         </div>
     </ul>
     <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent"
-            data-class="c-sidebar-minimized"></button>
+        data-class="c-sidebar-minimized"></button>
 </div>

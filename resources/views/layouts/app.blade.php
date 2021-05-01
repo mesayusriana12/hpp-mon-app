@@ -21,18 +21,22 @@
 @include('layouts.sidebar')
 
 <div class="c-wrapper">
-    <header class="c-header c-header-light c-header-fixed">
+    <header class="c-header c-header-dark c-header-fixed" style="background: #303C54; border-bottom: 1px solid #303C54">
         @include('layouts.header')
     </header>
 
     <div class="c-body">
         <main class="c-main">
+            <div class="container-fluid">
+                <div class="fade-in">
             @yield('content')
+                </div>
+            </div>
         </main>
     </div>
 
     <footer class="c-footer">
-        <div><a href="https://coreui.io">CoreUI</a> © 2020 creativeLabs.</div>
+        <div>Hybrid Power Plant Monitoring App © 2021</div>
         <div class="mfs-auto">Powered by&nbsp;<a href="https://coreui.io/">CoreUI</a></div>
     </footer>
 </div>
