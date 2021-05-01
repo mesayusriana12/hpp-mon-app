@@ -7,10 +7,7 @@
 
     <!-- CoreUI CSS -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="{{asset('plugins/font-awesome/css/all.min.css')}}">
 
     @yield('third_party_stylesheets')
 
@@ -42,7 +39,7 @@
 </div>
 
 <script src="{{ mix('js/app.js') }}" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.4.0/perfect-scrollbar.js"></script>
+<script src="{{ asset('js/jquery.perfect-scrollbar.js') }}" defer></script>
 
 @yield('third_party_scripts')
 

@@ -14,9 +14,8 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/login');
-});
+//route auth
+Route::get('/', function () { return redirect('/login'); });
 Auth::routes();
 
 Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth')->name('dashboard');
