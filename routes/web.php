@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,5 +20,12 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', function () { return redirect('/login'); });
 Auth::routes();
 
+//route dashboard
 Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth')->name('dashboard');
+
+//route profile
+Route::prefix('/profile')->middleware('auth')->group(function () {
+    Route::get('/',[ProfileController::class,'index'])->name('viewProfile');
+    Route::put('/',[ProfileController::class,'update'])->name('updateProfile');
+});
 

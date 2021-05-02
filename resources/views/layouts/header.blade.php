@@ -27,7 +27,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right pt-0">
             <div class="dropdown-header bg-light py-2"><strong>{{Auth::user()->fullname}}</strong></div>
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" href="{{route('viewProfile')}}">
                 <i class="c-icon mfe-2 cil-user"></i>Profile
             </a>
             <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

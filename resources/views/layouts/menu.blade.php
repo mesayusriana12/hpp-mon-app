@@ -1,13 +1,13 @@
 <li class="c-sidebar-nav-title">Dashboard</li>
 <li class="c-sidebar-nav-item">
-    <a class="c-sidebar-nav-link c-active" href="{{ route('dashboard') }}">
+    <a class="c-sidebar-nav-link" href="{{ route('dashboard') }}">
         <i class="c-sidebar-nav-icon cil-home"></i> <strong>Dashboard</strong> 
     </a>
 </li>
 
 <li class="c-sidebar-nav-title">Menu</li>
 <li class="c-sidebar-nav-item">
-    <a class="c-sidebar-nav-link" href="#">
+    <a class="c-sidebar-nav-link" href="{{route('viewProfile')}}">
         <i class="c-sidebar-nav-icon cil-user"></i>Profile
     </a>
 </li>

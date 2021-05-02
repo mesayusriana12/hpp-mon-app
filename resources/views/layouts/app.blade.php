@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ config('app.name') }}</title>
+    <title>HPP-Monitor | @yield('title')</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- CoreUI CSS -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('plugins/font-awesome/css/all.min.css')}}">
+
+    {{-- jquery --}}
+    <script src="{{asset('js/jquery.slim.js')}}" type="text/javascript"></script>
 
     @yield('third_party_stylesheets')
 
@@ -15,6 +18,7 @@
 </head>
 
 <body class="c-app">
+@include('sweetalert::alert')
 @include('layouts.sidebar')
 
 <div class="c-wrapper">
