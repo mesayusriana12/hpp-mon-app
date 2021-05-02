@@ -130,8 +130,9 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'username' => [
+            'required' => 'Mohon isi Username.',
+            'unique' => 'Username tersebut telah digunakan.'
         ],
     ],
 

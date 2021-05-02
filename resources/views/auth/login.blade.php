@@ -11,47 +11,49 @@
 
     <!-- CoreUI CSS -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" crossorigin="anonymous">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-          crossorigin="anonymous"/>
-
+    <style>
+        body {
+            background-image: url('../images/background/login-background.jpg'); background-size: cover;
+        }
+        .card{
+            border: 1px solid gray;
+        }
+    </style>
 </head>
 
-<body class="c-app flex-row align-items-center">
+<body class="c-app flex-row align-items-center" style="">
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="card-group">
-                <div class="card p-4">
+                <div class="card p-2">
                     <div class="card-body">
                         <form method="post" action="{{ url('/login') }}">
                             @csrf
-                            <h1>Login</h1>
-                            <p class="text-muted">Sign In to your account</p>
+                            <h1>Login HPP Monitoring App</h1>
+                            <p class="text-muted">Silahkan masukan username dan password!</p>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
-                                      <i class="cil-user"></i>
+                                        <i class="cil-user"></i>
                                     </span>
                                 </div>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                       name="email" value="{{ old('email') }}"
-                                       placeholder="Email">
-                                @error('email')
+                                <input type="text" class="form-control @error('username') is-invalid @enderror"
+                                        name="username" value="{{ old('username') }}"
+                                        placeholder="Username">
+                                @error('username')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="input-group mb-4">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">
-                                      <i class="cil-lock-locked"></i>
+                                        <i class="cil-lock-locked"></i>
                                     </span>
                                 </div>
                                 <input type="password"
-                                       class="form-control @error('password') is-invalid @enderror"
-                                       placeholder="Password" name="password">
+                                        class="form-control @error('password') is-invalid @enderror"
+                                        placeholder="Password" name="password">
                                 @error('password')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -60,22 +62,8 @@
                                 <div class="col-4">
                                     <button class="btn btn-primary px-4" type="submit">Login</button>
                                 </div>
-                                <div class="col-8 text-right">
-                                    <a class="btn btn-link px-0" href="{{ route('password.request') }}">
-                                        Forgot password?
-                                    </a>
-                                </div>
                             </div>
                         </form>
-                    </div>
-                </div>
-                <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
-                    <div class="card-body text-center">
-                        <div>
-                            <h2>Sign up</h2>
-                            <p>Sign in to start your session</p>
-                            <a class="btn btn-lg btn-outline-light mt-3" href="{{ route('register') }}">Register Now!</a>
-                        </div>
                     </div>
                 </div>
             </div>
