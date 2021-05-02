@@ -27,5 +27,6 @@ Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth
 Route::prefix('/profile')->middleware('auth')->group(function () {
     Route::get('/',[ProfileController::class,'index'])->name('viewProfile');
     Route::put('/',[ProfileController::class,'update'])->name('updateProfile');
+    Route::post('/pp',[ProfileController::class,'updateProfilePicture'])->name('updateProfilePicture');
 });
 

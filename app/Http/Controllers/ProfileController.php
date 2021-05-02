@@ -42,4 +42,20 @@ class ProfileController extends Controller
         ->timerProgressBar();
         return redirect('/profile');
     }
+
+    public function updateProfilePicture(Request $request){
+        $image = $request->image;
+
+        DB::table('users')->where('id', Auth::user()->id)
+        ->update(['profile_picture' => Auth::user()->username .'.png']);
+        
+        $image_array_1 = explode(";", $image);
+        $image_array_2 = explode(",", $image_array_1[1]);
+        $data = base64_decode($image_array_2[1]);
+        $image_name = 'images/profile_picture/' . Auth::user()->username . '.png';
+        file_put_contents($image_name, $data);
+        Alert::toast('Foto Profil berhasil diperbaharui!','success')
+        ->position('center')
+        ->timerProgressBar();
+    }
 }
