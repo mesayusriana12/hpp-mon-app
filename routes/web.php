@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SunDataController;
+use App\Http\Controllers\WindDataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +32,16 @@ Route::prefix('/profile')->middleware('auth')->group(function () {
     Route::post('/pp',[ProfileController::class,'updateProfilePicture'])->name('updateProfilePicture');
 });
 
+//route data matahari
+Route::prefix('/sun-data')->middleware('auth')->group(function () {
+    Route::get('/',[SunDataController::class,'index'])->name('viewSunData');
+    Route::get('/test',[SunDataController::class,'test'])->name('insertDummySun');
+    Route::delete('/',[SunDataController::class,'delete'])->name('deleteSunData');
+});
+
+//route data angin
+Route::prefix('/wind-data')->middleware('auth')->group(function () {
+    Route::get('/',[WindDataController::class,'index'])->name('viewWindData');
+    Route::get('/test',[WindDataController::class,'test'])->name('insertDummyWind');
+    Route::delete('/',[WindDataController::class,'delete'])->name('deleteWindData');
+});

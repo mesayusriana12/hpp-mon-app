@@ -37,7 +37,7 @@ class ProfileController extends Controller
             'email' => $request->email,
             'phone_number' => $request->phone_number,
         ]);
-        Alert::toast('Profile berhasil diupdate!','success')
+        Alert::toast('Profil berhasil diupdate!','success')
         ->position('center')
         ->timerProgressBar();
         return redirect('/profile');
