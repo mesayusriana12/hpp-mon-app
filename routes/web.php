@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SunDataController;
 use App\Http\Controllers\WindDataController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,14 @@ Route::prefix('/wind-data')->middleware('auth')->group(function () {
     Route::get('/',[WindDataController::class,'index'])->name('viewWindData');
     Route::get('/test',[WindDataController::class,'test'])->name('insertDummyWind');
     Route::delete('/',[WindDataController::class,'delete'])->name('deleteWindData');
+});
+
+//route CRUD user
+Route::prefix('/data-staff')->middleware('auth')->group(function () {
+    Route::get('/',[UserController::class,'index'])->name('datastaff.list');
+    Route::get('/create',[UserController::class,'create'])->name('datastaff.create');
+    Route::post('/',[UserController::class,'store'])->name('datastaff.store');
+    Route::get('/{id}/edit',[UserController::class,'edit'])->name('datastaff.edit');
+    Route::put('/{id}',[UserController::class,'update'])->name('datastaff.update');
+    Route::delete('/',[UserController::class,'delete'])->name('datastaff.delete');
 });
