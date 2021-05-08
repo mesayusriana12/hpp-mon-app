@@ -28,7 +28,7 @@ class ProfileController extends Controller
         $request->validate([
             'fullname' => 'required',
             'email' => 'email',
-            'phone_number' => 'min:13'
+            'phone_number' => 'numeric'
         ]);
         DB::table('users')->where('id',Auth::user()->id)
         ->update([

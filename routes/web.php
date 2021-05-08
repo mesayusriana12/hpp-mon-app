@@ -52,7 +52,7 @@ Route::prefix('/data-staff')->middleware('auth')->group(function () {
     Route::get('/',[UserController::class,'index'])->name('datastaff.list');
     Route::get('/create',[UserController::class,'create'])->name('datastaff.create');
     Route::post('/',[UserController::class,'store'])->name('datastaff.store');
-    Route::get('/{id}/edit',[UserController::class,'edit'])->name('datastaff.edit');
-    Route::put('/{id}',[UserController::class,'update'])->name('datastaff.update');
-    Route::delete('/',[UserController::class,'delete'])->name('datastaff.delete');
+    Route::get('/{user}/edit',[UserController::class,'edit'])->name('datastaff.edit');
+    Route::put('/{user}',[UserController::class,'update'])->name('datastaff.update');
+    Route::delete('/',[UserController::class,'destroy'])->name('datastaff.delete');
 });

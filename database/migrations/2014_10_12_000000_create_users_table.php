@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('email',60);
             $table->string('password',100);
             $table->string('fullname',100);
-            $table->string('phone_number',13)->nullable();
+            $table->string('phone_number',20)->nullable();
             $table->string('profile_picture',100)->default('default.jpg');
             $table->unsignedBigInteger('role_id');
             $table->foreign('role_id')->references('id')->on('m_role')->onUpdate('cascade')->onDelete('restrict');

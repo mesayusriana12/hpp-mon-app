@@ -57,12 +57,12 @@
         </a>
         <ul class="c-sidebar-nav-dropdown-items">
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="#">
+                <a class="c-sidebar-nav-link" href="{{route('datastaff.list')}}">
                     <i class="c-sidebar-nav-icon cil-people"></i>Lihat Staff
                 </a>
             </li>
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="#">
+                <a class="c-sidebar-nav-link" href="{{route('datastaff.create')}}">
                     <i class="c-sidebar-nav-icon fa fa-user-plus"></i>Tambah Staff
                 </a>
             </li>
