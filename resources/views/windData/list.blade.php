@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title','Data Matahari')
+@section('title','Data | Angin')
 
 @section('breadcrumb')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb border-0 m-0">
             <li class="breadcrumb-item">App</li>
-            <li class="breadcrumb-item">Monitoring</li>
+            <li class="breadcrumb-item">Data Monitoring</li>
             <li class="breadcrumb-item active" aria-current="page">Angin</li>
         </ol>
     </nav>
@@ -59,25 +59,25 @@
                     <table id="table-wind" class="table table-bordered table-stripped text-center" width="100%">
                         <thead>
                             <tr>
-                                <th scope="col" width="6%">Checkbox</th>
                                 <th scope="col">Data ID</th>
                                 <th scope="col">Tegangan</th>
                                 <th scope="col">Arus</th>
                                 <th scope="col">RPM</th>
                                 <th scope="col">Kecepatan Angin</th>
                                 <th scope="col">Timestamps</th>
+                                <th scope="col" width="6%">Checkbox</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($windData as $item)
                                 <tr>
-                                    <td><input type="checkbox" name="selectid[]" value="{{$item->id}}" class="check-item" form="delete-winddata"></td>
                                     <td>{{$item->data_id}}</td>
                                     <td>{{$item->voltage}} V</td>
                                     <td>{{$item->current}} A</td>
                                     <td>{{$item->rpm}}</td>
                                     <td>{{$item->wind_speed}} <sup>m/s</sup></td>
                                     <td>{{indonesian_date($item->created_at,true)}}</td>
+                                    <td><input type="checkbox" name="selectid[]" value="{{$item->id}}" class="check-item" form="delete-winddata"></td>
                                 </tr>
                             @endforeach
                         </tbody>

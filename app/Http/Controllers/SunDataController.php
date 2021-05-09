@@ -26,6 +26,13 @@ class SunDataController extends Controller
         return redirect('/sun-data');
     }
 
+    public function graph(){
+        return view('sunData.search');
+    }
+
+    public function ajaxGraph(Request $request){
+
+    }
     public function test(){
         $lastId = DB::table('m_main_data')->orderByDesc('id')->first();
         $lastId->id++;

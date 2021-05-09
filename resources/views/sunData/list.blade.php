@@ -1,11 +1,11 @@
 @extends('layouts.app')
-@section('title','Data Matahari')
+@section('title','Data | Matahari')
 
 @section('breadcrumb')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb border-0 m-0">
             <li class="breadcrumb-item">App</li>
-            <li class="breadcrumb-item">Monitoring</li>
+            <li class="breadcrumb-item">Data Monitoring</li>
             <li class="breadcrumb-item active" aria-current="page">Matahari</li>
         </ol>
     </nav>
@@ -59,23 +59,23 @@
                     <table id="table-sun" class="table table-bordered table-stripped text-center" width="100%">
                         <thead>
                             <tr>
-                                <th scope="col" width="6%">Checkbox</th>
                                 <th scope="col">Data ID</th>
                                 <th scope="col">Tegangan</th>
                                 <th scope="col">Arus</th>
                                 <th scope="col">Lux</th>
                                 <th scope="col">Timestamps</th>
+                                <th scope="col" width="6%">Checkbox</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($sundata as $item)
                                 <tr>
-                                    <td><input type="checkbox" name="selectid[]" value="{{$item->id}}" class="check-item" form="delete-sundata"></td>
                                     <td>{{$item->data_id}}</td>
                                     <td>{{$item->voltage}} V</td>
                                     <td>{{$item->current}} A</td>
                                     <td>{{$item->lux}}</td>
                                     <td>{{indonesian_date($item->created_at,true)}}</td>
+                                    <td><input type="checkbox" name="selectid[]" value="{{$item->id}}" class="check-item" form="delete-sundata"></td>
                                 </tr>
                             @endforeach
                         </tbody>

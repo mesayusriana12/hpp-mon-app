@@ -14,7 +14,7 @@
 
 <li class="c-sidebar-nav-dropdown">
     <a class="c-sidebar-nav-dropdown-toggle" href="#">
-        <i class="c-sidebar-nav-icon cil-graph"></i>Monitoring
+        <i class="c-sidebar-nav-icon cil-spreadsheet"></i>Data Monitoring
     </a>
     <ul class="c-sidebar-nav-dropdown-items">
         <li class="c-sidebar-nav-item">
@@ -24,6 +24,24 @@
         </li>
         <li class="c-sidebar-nav-item">
             <a class="c-sidebar-nav-link" href="{{route('viewWindData')}}">
+                <i class="c-sidebar-nav-icon fa fa-wind"></i>Angin
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="c-sidebar-nav-dropdown">
+    <a class="c-sidebar-nav-dropdown-toggle" href="#">
+        <i class="c-sidebar-nav-icon cil-graph"></i>Grafik Monitoring
+    </a>
+    <ul class="c-sidebar-nav-dropdown-items">
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="{{route('viewGraphSun')}}">
+                <i class="c-sidebar-nav-icon cil-sun"></i>Matahari
+            </a>
+        </li>
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="{{route('viewGraphWind')}}">
                 <i class="c-sidebar-nav-icon fa fa-wind"></i>Angin
             </a>
         </li>

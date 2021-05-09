@@ -38,6 +38,8 @@ Route::prefix('/sun-data')->middleware('auth')->group(function () {
     Route::get('/',[SunDataController::class,'index'])->name('viewSunData');
     Route::get('/test',[SunDataController::class,'test'])->name('insertDummySun');
     Route::delete('/',[SunDataController::class,'delete'])->name('deleteSunData');
+    Route::get('/graph',[SunDataController::class,'graph'])->name('viewGraphSun');
+    Route::post('/graph',[SunDataController::class,'ajaxGraph'])->name('ajaxGraphSun');
 });
 
 //route data angin
@@ -45,6 +47,8 @@ Route::prefix('/wind-data')->middleware('auth')->group(function () {
     Route::get('/',[WindDataController::class,'index'])->name('viewWindData');
     Route::get('/test',[WindDataController::class,'test'])->name('insertDummyWind');
     Route::delete('/',[WindDataController::class,'delete'])->name('deleteWindData');
+    Route::get('/graph',[WindDataController::class,'graph'])->name('viewGraphWind');
+    Route::post('/graph',[WindDataController::class,'ajaxGraph'])->name('ajaxGraphWind');
 });
 
 //route CRUD user
