@@ -28,11 +28,11 @@
         return $join;
     }
 
-    function pushObjectData($data_array, $insert_data, $insert_name) {
+    function pushObjectData($data_array, $insert_data, $insert_name, $divide_by = null) {
         $length = count($insert_data) - 1;
         $temp = array();
         for ($i = 0; $i < count($insert_data); $i++) { 
-            $temp[$i] = $insert_data[$length];
+            $temp[$i] = ($divide_by ? ($insert_data[$length] / $divide_by) : $insert_data[$length]);
             $length--;
         }
         $data_array->$insert_name = $temp;

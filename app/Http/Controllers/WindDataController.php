@@ -26,6 +26,14 @@ class WindDataController extends Controller
         return redirect('/wind-data');
     }
 
+    public function graph(){
+        return view('windData.search');
+    }
+
+    public function ajaxGraph(Request $request){
+
+    }
+    
     public function test(){
         $lastId = DB::table('m_main_data')->orderByDesc('id')->first();
         $lastId->id++;

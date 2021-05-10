@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Grafik | Angin')
+@section('title','Grafik Angin')
 
 @section('breadcrumb')
     <nav aria-label="breadcrumb">
