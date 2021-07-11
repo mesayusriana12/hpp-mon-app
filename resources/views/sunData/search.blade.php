@@ -46,7 +46,7 @@
                                 <input type="checkbox" name="current" id="current"> Arus
                                 <input type="checkbox" name="lux" id="lux"> Lux
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-2 col-md-2">
                                 <button class="btn btn-dark" type="submit" id="btn-submit">Lihat Grafik</button>
                             </div>
                         </div>
@@ -109,7 +109,7 @@
                     error: function (jXHR, textStatus, errorThrown) {
                     Swal.fire({
                         title: 'Error!',
-                        text: "Pencarian grafik gagal!",
+                        text: "Pencarian grafik gagal! Mohon periksa tanggal yang dicari!",
                         icon: 'error',
                         width: 600
                     });

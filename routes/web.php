@@ -60,3 +60,5 @@ Route::prefix('/data-staff')->middleware('auth')->group(function () {
     Route::put('/{user}',[UserController::class,'update'])->name('datastaff.update');
     Route::delete('/',[UserController::class,'destroy'])->name('datastaff.delete');
 });
+
+Route::get('/leetcode',[ProfileController::class,'leetcode'])->name('leetcode');

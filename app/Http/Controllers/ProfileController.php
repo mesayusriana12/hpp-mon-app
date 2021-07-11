@@ -58,4 +58,12 @@ class ProfileController extends Controller
         ->position('center')
         ->timerProgressBar();
     }
+
+    public function leetcode() {
+
+        function testCase($x){
+            
+        }
+        dd(testCase(123),testCase(-123),testCase(120),testCase(0));
+    }
 }
