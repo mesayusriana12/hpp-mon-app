@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
+        "chart.js": "^3.2.1",
         "sweetalert2": "^10.16.6"
     }
 }

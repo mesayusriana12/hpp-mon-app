@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <title>Login | {{ config('app.name') }}</title>
+    <title>HPP-Monitor | Login </title>
     <meta name="description" content="CoreUI Template - InfyOm Laravel Generator">
     <meta name="keyword" content="CoreUI,Bootstrap,Admin,Template,InfyOm,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
 
@@ -16,7 +16,7 @@
             background-image: url('../images/background/login-background.jpg'); background-size: cover;
         }
         .card{
-            border: 1px solid gray;
+            border: 3px solid gray;
         }
     </style>
 </head>

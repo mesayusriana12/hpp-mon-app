@@ -73,7 +73,7 @@
                             <label class="col-md-3 col-form-label" for="phone_number">Nomor Telepon : </label>
                             <div class="col-md-9">
                                 <input class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" type="number" placeholder="Nomor Telepon (Mohon hanya isi dengan angka)" value="{{$user->phone_number}}" readonly>
-                                @error('phone_number') <div class="invalid-feedback">Mohon isi Nomor Telepon hanya dengan angka dan tidak melebihi 13 karakter.</div> @enderror
+                                @error('phone_number') <div class="invalid-feedback">Mohon isi Nomor Telepon hanya dengan angka.</div> @enderror
                             </div>
                         </div>
                     </form>

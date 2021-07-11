@@ -28,7 +28,7 @@ class ProfileController extends Controller
         $request->validate([
             'fullname' => 'required',
             'email' => 'email',
-            'phone_number' => 'min:13'
+            'phone_number' => 'numeric'
         ]);
         DB::table('users')->where('id',Auth::user()->id)
         ->update([
@@ -37,7 +37,7 @@ class ProfileController extends Controller
             'email' => $request->email,
             'phone_number' => $request->phone_number,
         ]);
-        Alert::toast('Profile berhasil diupdate!','success')
+        Alert::toast('Profil berhasil diupdate!','success')
         ->position('center')
         ->timerProgressBar();
         return redirect('/profile');

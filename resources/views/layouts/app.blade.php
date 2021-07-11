@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>HPP-Monitor | @yield('title')</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-
+    <link rel="icon" href="{{ asset('images/logo/HPP_Monitor-logo-mini.png')}}">
     <!-- CoreUI CSS -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('plugins/font-awesome/css/all.min.css')}}">
@@ -42,8 +42,8 @@
     </footer>
 </div>
 
-<script src="{{ mix('js/app.js') }}" defer></script>
-<script src="{{ asset('js/jquery.perfect-scrollbar.js') }}" defer></script>
+<script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ asset('js/jquery.perfect-scrollbar.js') }}"></script>
 
 @yield('third_party_scripts')
 

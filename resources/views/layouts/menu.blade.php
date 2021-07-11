@@ -6,24 +6,37 @@
 </li>
 
 <li class="c-sidebar-nav-title">Menu</li>
-<li class="c-sidebar-nav-item">
-    <a class="c-sidebar-nav-link" href="{{route('viewProfile')}}">
-        <i class="c-sidebar-nav-icon cil-user"></i>Profile
-    </a>
-</li>
 
 <li class="c-sidebar-nav-dropdown">
     <a class="c-sidebar-nav-dropdown-toggle" href="#">
-        <i class="c-sidebar-nav-icon cil-graph"></i>Monitoring
+        <i class="c-sidebar-nav-icon cil-spreadsheet"></i>Data Monitoring
     </a>
     <ul class="c-sidebar-nav-dropdown-items">
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="#">
+            <a class="c-sidebar-nav-link" href="{{route('viewSunData')}}">
                 <i class="c-sidebar-nav-icon cil-sun"></i>Matahari
             </a>
         </li>
         <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="#">
+            <a class="c-sidebar-nav-link" href="{{route('viewWindData')}}">
+                <i class="c-sidebar-nav-icon fa fa-wind"></i>Angin
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li class="c-sidebar-nav-dropdown">
+    <a class="c-sidebar-nav-dropdown-toggle" href="#">
+        <i class="c-sidebar-nav-icon cil-graph"></i>Grafik Monitoring
+    </a>
+    <ul class="c-sidebar-nav-dropdown-items">
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="{{route('viewGraphSun')}}">
+                <i class="c-sidebar-nav-icon cil-sun"></i>Matahari
+            </a>
+        </li>
+        <li class="c-sidebar-nav-item">
+            <a class="c-sidebar-nav-link" href="{{route('viewGraphWind')}}">
                 <i class="c-sidebar-nav-icon fa fa-wind"></i>Angin
             </a>
         </li>
@@ -57,12 +70,12 @@
         </a>
         <ul class="c-sidebar-nav-dropdown-items">
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="#">
+                <a class="c-sidebar-nav-link" href="{{route('datastaff.list')}}">
                     <i class="c-sidebar-nav-icon cil-people"></i>Lihat Staff
                 </a>
             </li>
             <li class="c-sidebar-nav-item">
-                <a class="c-sidebar-nav-link" href="#">
+                <a class="c-sidebar-nav-link" href="{{route('datastaff.create')}}">
                     <i class="c-sidebar-nav-icon fa fa-user-plus"></i>Tambah Staff
                 </a>
             </li>
@@ -75,7 +88,7 @@
         </a>
     </li>
     <li class="c-sidebar-nav-item">
-        <a class="c-sidebar-nav-link" href="#">
+        <a class="c-sidebar-nav-link" href="{{route('setting')}}">
             <i class="c-sidebar-nav-icon cil-settings"></i>Pengaturan
         </a>
     </li>
