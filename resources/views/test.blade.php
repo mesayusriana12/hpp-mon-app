@@ -1,1 +1,2 @@
-@dump($data);
+<?php phpinfo() ?>
+{{-- @dump($data); --}}
