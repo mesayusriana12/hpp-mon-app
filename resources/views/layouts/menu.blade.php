@@ -88,7 +88,7 @@
         </a>
     </li>
     <li class="c-sidebar-nav-item">
-        <a class="c-sidebar-nav-link" href="#">
+        <a class="c-sidebar-nav-link" href="{{route('setting')}}">
             <i class="c-sidebar-nav-icon cil-settings"></i>Pengaturan
         </a>
     </li>

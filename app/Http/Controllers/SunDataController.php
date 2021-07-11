@@ -32,8 +32,9 @@ class SunDataController extends Controller
     }
 
     public function ajaxGraph(Request $request){
+        $setting = getSetting();
         $data = new stdClass();
-        $get_data = DB::table('m_sun_data')->latest()->take(env('HPP_MAX_DATA_IN_GRAPH'))
+        $get_data = DB::table('m_sun_data')->latest()->take($setting['max_data_in_graph'])
         ->select(['voltage','current','lux','created_at'])
         ->whereDate('created_at','>=',$request->date_start)
         ->whereDate('created_at','<=',$request->date_end)

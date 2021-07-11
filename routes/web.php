@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SunDataController;
 use App\Http\Controllers\WindDataController;
 use App\Http\Controllers\UserController;
@@ -61,4 +62,9 @@ Route::prefix('/data-staff')->middleware('auth')->group(function () {
     Route::delete('/',[UserController::class,'destroy'])->name('datastaff.delete');
 });
 
-Route::get('/leetcode',[ProfileController::class,'leetcode'])->name('leetcode');
+Route::prefix('/setting')->middleware('auth')->group(function () {
+    Route::get('/',[SettingController::class,'index'])->name('setting');
+    Route::post('/save',[SettingController::class,'save'])->name('saveSetting');
+});
+
+Route::get('/test',function () { return view('test'); })->name('test');

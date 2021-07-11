@@ -10,8 +10,9 @@ class DashboardController extends Controller
 {
     public function index()
     {   
+        $setting = getSetting();
         $sun_data = new stdClass();
-        $get_sun_data = DB::table('m_sun_data')->latest()->take(15)
+        $get_sun_data = DB::table('m_sun_data')->latest()->take($setting['max_data_in_graph'])
         ->select(['voltage','current','lux','created_at'])
         ->whereRaw("created_at LIKE '" . date('Y-m-d') . "%'")->get();
 
@@ -21,7 +22,7 @@ class DashboardController extends Controller
         pushObjectDataTime($sun_data,$get_sun_data->pluck('created_at'),'timestamp');
         
         $wind_data = new stdClass();
-        $get_wind_data = DB::table('m_wind_data')->latest()->take(15)
+        $get_wind_data = DB::table('m_wind_data')->latest()->take($setting['max_data_in_graph'])
         ->select(['voltage','current','rpm','wind_speed','created_at'])
         ->whereRaw("created_at LIKE '" . date('Y-m-d') . "%'")->get();
 

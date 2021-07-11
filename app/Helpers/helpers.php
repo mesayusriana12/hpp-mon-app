@@ -1,4 +1,6 @@
 <?php
+    use Illuminate\Support\Facades\DB;
+
     function indonesian_date($waktu,$jam = false){
 
         $split = explode(' ',$waktu);
@@ -53,22 +55,11 @@
         $data_array->$insert_name = $temp;
         return $data_array;
     }
-
-    function changeEnvironmentVariable($key, $value){
-        $path = base_path('.env');
-
-        if(is_bool(env($key))){
-            $old = env($key )? 'true' : 'false';
-        } elseif(env($key) === null){
-            $old = 'null';
-        } else{
-            $old = env($key);
+    function getSetting(){
+        $get_setting = DB::table('settings')->get();
+        foreach ($get_setting as $item) {
+            $setting[$item->name] = $item->value;
         }
-        
-        if (file_exists($path)) {
-            file_put_contents($path, str_replace(
-                "$key=".$old, "$key=".$value, file_get_contents($path)
-            ));
-        }
+        return $setting;
     }
 ?>
