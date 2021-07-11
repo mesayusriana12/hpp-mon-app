@@ -47,13 +47,13 @@
                         @method('delete')
                     </form>
                     <form action="{{route('insertDummySun')}}" method="get" id="insert-dummy"></form>
-                    <button type="button" class="btn btn-danger mb-3" id="btn-delete" form="delete-sundata">
-                        <span class="cil-trash btn-icon mr-2"></span>
-                        Hapus Data Terpilih
-                    </button>
                     <button type="submit" class="btn btn-info mb-3" id="btn-delete" form="insert-dummy">
                         <span class="cil-plus btn-icon mr-2"></span>
                         Tambah Data Dummy
+                    </button>
+                    <button type="button" class="btn btn-danger mb-3" id="btn-delete" form="delete-sundata">
+                        <span class="cil-trash btn-icon mr-2"></span>
+                        Hapus Data Terpilih
                     </button>
                     <div class="separator"></div>
                     <table id="table-sun" class="table table-bordered table-stripped text-center" width="100%">

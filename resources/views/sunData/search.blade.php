@@ -103,7 +103,6 @@
                         lux: lux
                     },
                     success: function(response) {
-                        console.log(response)
                         $('#panel-output').html(response);
                     },
                     error: function (jXHR, textStatus, errorThrown) {

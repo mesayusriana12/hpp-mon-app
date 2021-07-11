@@ -59,40 +59,33 @@
                         @csrf
                         @method('delete')
                     </form>
-                    <button type="button" class="btn btn-danger mb-3" id="btn-delete" form="delete-user">
-                        <span class="cil-trash btn-icon mr-2"></span>
-                        Hapus Data Terpilih
-                    </button>
                     <a href="{{route('datastaff.create')}}">
                         <button type="button" class="btn btn-info mb-3" form="insert-staff">
                             <span class="cil-plus btn-icon mr-2"></span>
                             Tambah Data Staff
                         </button>
                     </a>
+                    <button type="button" class="btn btn-danger mb-3" id="btn-delete" form="delete-user">
+                        <span class="cil-trash btn-icon mr-2"></span>
+                        Hapus Data Terpilih
+                    </button>
                     <div class="separator"></div>
                     <table id="table-user" class="table table-bordered table-stripped text-center" width="100%">
                         <thead>
                             <tr>
-                                <th scope="col" width="10%">Checkbox</th>
-                                <th scope="col">Aksi</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Foto Profil</th>
                                 <th scope="col">Nama Lengkap</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Nomor Telepon</th>
+                                <th scope="col">Aksi</th>
+                                <th scope="col" width="10%">Checkbox</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($userdata as $item)
                                 <tr>
-                                    <td><input type="checkbox" name="selectid[]" value="{{$item->id}}" class="check-item" form="delete-user"></td>
-                                    <td>
-                                        <a href="{{route('datastaff.edit',['user' => $item->id])}}">
-                                            <button type="button" class="btn btn-success btn-sm">
-                                                <span class="cil-pencil btn-icon mr-2"></span>
-                                                Edit
-                                            </button>
-                                        </a>
-                                    </td>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>
                                         <div class="img-on-table">
                                             <img src="{{asset('images/profile_picture/' . $item->profile_picture)}}" alt="Foto Profil ({{$item->username}})">
@@ -101,6 +94,15 @@
                                     <td>{{$item->fullname}}</td>
                                     <td>{{$item->email}}</td>
                                     <td>{{$item->phone_number}}</td>
+                                    <td>
+                                        <a href="{{route('datastaff.edit',['user' => $item->id])}}">
+                                            <button type="button" class="btn btn-success btn-sm">
+                                                <span class="cil-pencil btn-icon mr-2"></span>
+                                                Edit
+                                            </button>
+                                        </a>
+                                    </td>
+                                    <td><input type="checkbox" name="selectid[]" value="{{$item->id}}" class="check-item" form="delete-user"></td>
                                 </tr>
                             @endforeach
                         </tbody>

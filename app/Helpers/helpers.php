@@ -54,7 +54,7 @@
         return $data_array;
     }
 
-    function changeEnvironmentVariable($key,$value){
+    function changeEnvironmentVariable($key, $value){
         $path = base_path('.env');
 
         if(is_bool(env($key))){

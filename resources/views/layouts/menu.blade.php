@@ -6,11 +6,6 @@
 </li>
 
 <li class="c-sidebar-nav-title">Menu</li>
-<li class="c-sidebar-nav-item">
-    <a class="c-sidebar-nav-link" href="{{route('viewProfile')}}">
-        <i class="c-sidebar-nav-icon cil-user"></i>Profile
-    </a>
-</li>
 
 <li class="c-sidebar-nav-dropdown">
     <a class="c-sidebar-nav-dropdown-toggle" href="#">
