@@ -16,6 +16,18 @@
     <link rel="stylesheet" href="{{asset('plugins/bootstrap-datepicker/css/bootstrap-datepicker.css')}}">
 @endsection
 
+@push('page_css')
+    <style>
+        @media print {
+            #sun_export {page-break-after: always;}
+        }
+        #sun_info.table th, #sun_info.table td,
+        #wind_info.table th, #wind_info.table td{
+            border-top: 0 !important;
+        }
+    </style>
+@endpush
+
 @section('content')
     <div class="row">
         <div class="col-sm-12 col-md-12">
@@ -40,9 +52,9 @@
                                 </div>
                             </div>
                             <div class="col-sm-5 col-md-5">
-                                Data untuk ditampilkan :
-                                <input type="checkbox" name="sun" id="sun"> Matahari
-                                <input type="checkbox" name="wind" id="wind"> Angin
+                                Pilih Sumber Energi :
+                                <input type="radio" name="type" value="sun"> Matahari
+                                <input type="radio" name="type" value="wind"> Angin
                             </div>
                             <div class="col-sm-2 col-md-2">
                                 <button class="btn btn-dark" type="submit" id="btn-submit">Lihat Laporan</button>
@@ -80,8 +92,7 @@
                 event.preventDefault();
                 let date_start = $('#date_start').val();
                 let date_end = $('#date_end').val();
-                let sun = $('#sun').is(':checked');
-                let wind = $('#wind').is(':checked');
+                let type = $("input[name='type']:checked").val();
                 
                 $.ajaxSetup({
                     headers: {
@@ -94,8 +105,7 @@
                     data: {
                         date_start: date_start,
                         date_end: date_end,
-                        sun: sun,
-                        wind: wind
+                        type: type
                     },
                     success: function(response) {
                         $('#panel-output').html(response);

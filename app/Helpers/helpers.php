@@ -5,7 +5,7 @@
 
         $split = explode(' ',$waktu);
         $tanggal = explode('-',$split[0]);
-
+        
         switch($tanggal[1]){
             case '01':$bulan = 'Januari'; break;
             case '02':$bulan = 'Februari'; break;
@@ -55,6 +55,7 @@
         $data_array->$insert_name = $temp;
         return $data_array;
     }
+
     function getSetting(){
         $get_setting = DB::table('settings')->get();
         foreach ($get_setting as $item) {
