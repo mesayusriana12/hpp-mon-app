@@ -67,8 +67,8 @@ Route::prefix('/data-staff')->middleware('auth')->group(function () {
 Route::prefix('/report')->middleware('auth')->group(function () {
     Route::get('/',[ReportController::class,'index'])->name('report');
     Route::post('/preview',[ReportController::class,'search'])->name('reportPreview');
-    Route::post('/excel',[ReportController::class,'excel'])->name('reportExcel');
-    Route::post('/pdf',[ReportController::class,'pdf'])->name('reportPDF');
+    Route::get('/excel/{type}/{start}/{end}',[ReportController::class,'excel'])->name('reportExcel');
+    Route::get('/pdf/{type}/{start}/{end}',[ReportController::class,'pdf'])->name('reportPDF');
 });
 //route log
 

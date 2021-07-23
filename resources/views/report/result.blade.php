@@ -77,13 +77,13 @@
                     </div>
                     <div class="col-md-4">
                         <div class="button-action" style="position: absolute; bottom: 5px; right: 15px">
-                            <a href="{{route('reportExcel')}}">
+                            <a href="{{url('/report/excel/sun/' . $start_date . '/' . $start_date)}}">
                                 <button type="button" class="btn btn-success mb-3">
                                     <span class="fa fa-file-excel btn-icon mr-2"></span>
                                     Simpan Excel
                                 </button>
                             </a>
-                            <a href="{{route('reportPDF')}}">
+                            <a target="_blank" href="{{url('/report/pdf/sun/' . $start_date . '/' . $start_date)}}">
                                 <button type="button" class="btn btn-danger mb-3">
                                     <span class="fa fa-file-pdf btn-icon mr-2"></span>
                                     Simpan PDF
@@ -166,13 +166,13 @@
                     </div>
                     <div class="col-md-4">
                         <div class="button-action" style="position: absolute; bottom: 5px; right: 15px">
-                            <a href="{{route('reportExcel')}}">
+                            <a href="{{url('/report/excel/wind/' . $start_date . '/' . $start_date)}}">
                                 <button type="button" class="btn btn-success mb-3">
                                     <span class="fa fa-file-excel btn-icon mr-2"></span>
                                     Simpan Excel
                                 </button>
                             </a>
-                            <a href="{{route('reportPDF')}}">
+                            <a target="_blank" href="{{url('/report/pdf/wind/' . $start_date . '/' . $start_date)}}">
                                 <button type="button" class="btn btn-danger mb-3">
                                     <span class="fa fa-file-pdf btn-icon mr-2"></span>
                                     Simpan PDF
