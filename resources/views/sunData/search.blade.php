@@ -43,7 +43,6 @@
                             <div class="col-sm-5 col-md-5">
                                 Data untuk ditampilkan :
                                 <input type="checkbox" name="voltage" id="voltage"> Tegangan
-                                <input type="checkbox" name="current" id="current"> Arus
                                 <input type="checkbox" name="lux" id="lux"> Lux
                             </div>
                             <div class="col-sm-2 col-md-2">
@@ -84,7 +83,6 @@
                 var date_start = $('#date_start').val();
                 var date_end = $('#date_end').val();
                 var voltage = $('#voltage').is(':checked');
-                var current = $('#current').is(':checked');
                 var lux = $('#lux').is(':checked');
                 
                 $.ajaxSetup({
@@ -93,13 +91,12 @@
                     }
                 });
                 $.ajax({
-                    url: '/sun-data/graph',
+                    url: "{{ route('ajaxGraphSun') }}",
                     type: 'POST',
                     data: {
                         date_start: date_start,
                         date_end: date_end,
                         voltage: voltage,
-                        current: current,
                         lux: lux
                     },
                     success: function(response) {

@@ -8,6 +8,6 @@ class MasterSunData extends Model
 {
     protected $table = 'm_sun_data';
     protected $fillable = [
-        'data_id','voltage','current','lux','main_data_id'
+        'data_id','voltage','lux','main_data_id'
     ];
 }

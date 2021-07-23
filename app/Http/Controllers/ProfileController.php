@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -30,7 +31,7 @@ class ProfileController extends Controller
             'email' => 'email',
             'phone_number' => 'numeric'
         ]);
-        DB::table('users')->where('id',Auth::user()->id)
+        User::where('id',Auth::user()->id)
         ->update([
             'username' => $request->username,
             'fullname' => $request->fullname,
@@ -46,7 +47,7 @@ class ProfileController extends Controller
     public function updateProfilePicture(Request $request){
         $image = $request->image;
 
-        DB::table('users')->where('id', Auth::user()->id)
+        User::where('id', Auth::user()->id)
         ->update(['profile_picture' => Auth::user()->username .'.png']);
         
         $image_array_1 = explode(";", $image);

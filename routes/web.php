@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SunDataController;
 use App\Http\Controllers\WindDataController;
@@ -62,6 +63,14 @@ Route::prefix('/data-staff')->middleware('auth')->group(function () {
     Route::delete('/',[UserController::class,'destroy'])->name('datastaff.delete');
 });
 
+//route pelaporan
+Route::prefix('/report')->middleware('auth')->group(function () {
+    Route::get('/',[ReportController::class,'index'])->name('report');
+    Route::post('/preview',[ReportController::class,'search'])->name('reportPreview');
+});
+//route log
+
+//route pengaturan aplikasi
 Route::prefix('/setting')->middleware('auth')->group(function () {
     Route::get('/',[SettingController::class,'index'])->name('setting');
     Route::post('/save',[SettingController::class,'save'])->name('saveSetting');

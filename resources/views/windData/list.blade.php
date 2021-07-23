@@ -47,7 +47,7 @@
                         @method('delete')
                     </form>
                     <form action="{{route('insertDummyWind')}}" method="get" id="insert-dummy"></form>
-                    <button type="submit" class="btn btn-info mb-3" id="btn-delete" form="insert-dummy">
+                    <button type="submit" class="btn btn-info mb-3" form="insert-dummy">
                         <span class="cil-plus btn-icon mr-2"></span>
                         Tambah Data Dummy
                     </button>
@@ -61,10 +61,8 @@
                             <tr>
                                 <th scope="col">Data ID</th>
                                 <th scope="col">Tegangan</th>
-                                <th scope="col">Arus</th>
-                                <th scope="col">RPM</th>
                                 <th scope="col">Kecepatan Angin</th>
-                                <th scope="col">Timestamps</th>
+                                <th scope="col">Waktu Tercatat</th>
                                 <th scope="col" width="6%">Checkbox</th>
                             </tr>
                         </thead>
@@ -73,8 +71,6 @@
                                 <tr>
                                     <td>{{$item->data_id}}</td>
                                     <td>{{$item->voltage}} V</td>
-                                    <td>{{$item->current}} A</td>
-                                    <td>{{$item->rpm}}</td>
                                     <td>{{$item->wind_speed}} <sup>m/s</sup></td>
                                     <td>{{indonesian_date($item->created_at,true)}}</td>
                                     <td><input type="checkbox" name="selectid[]" value="{{$item->id}}" class="check-item" form="delete-winddata"></td>

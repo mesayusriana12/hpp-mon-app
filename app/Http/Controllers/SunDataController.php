@@ -34,15 +34,14 @@ class SunDataController extends Controller
     public function ajaxGraph(Request $request){
         $setting = getSetting();
         $data = new stdClass();
-        $get_data = DB::table('m_sun_data')->latest()->take($setting['max_data_in_graph'])
-        ->select(['voltage','current','lux','created_at'])
+        $get_data = MasterSunData::latest()->take($setting['max_data_in_graph'])
+        ->select(['voltage','lux','created_at'])
         ->whereDate('created_at','>=',$request->date_start)
         ->whereDate('created_at','<=',$request->date_end)
         ->get();
 
         pushObjectDataTime($data,$get_data->pluck('created_at'),'timestamp');
         ($request->voltage == 'true' ? pushObjectData($data,$get_data->pluck('voltage'),'voltage') : '');
-        ($request->current == 'true' ? pushObjectData($data,$get_data->pluck('current'),'current') : '');
         ($request->lux == 'true' ? pushObjectData($data,$get_data->pluck('lux'),'lux',1000) : '');
         
         return view('sunData.result',[
@@ -59,7 +58,6 @@ class SunDataController extends Controller
         MasterSunData::create([
             'data_id' => 'M-' . rand(1,100),
             'voltage' => rand(1,240)/10,
-            'current' => rand(1,120)/10,
             'lux' => rand(1,1000000)/10,
             'main_data_id' => $lastId->id
         ]);

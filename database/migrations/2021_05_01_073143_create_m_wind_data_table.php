@@ -17,8 +17,6 @@ class CreateMWindDataTable extends Migration
             $table->id();
             $table->string('data_id',10);
             $table->double('voltage');
-            $table->double('current');
-            $table->double('rpm');
             $table->double('wind_speed');
             $table->timestamps();
             $table->unsignedBigInteger('main_data_id');
