@@ -68,3 +68,4 @@ Route::prefix('/setting')->middleware('auth')->group(function () {
 });
 
 Route::get('/test',function () { return view('test'); })->name('test');
+Route::post('/test',[SettingController::class,'testchart'])->name('testchart');

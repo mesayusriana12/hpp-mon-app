@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class SettingController extends Controller
@@ -36,4 +37,30 @@ class SettingController extends Controller
         return redirect('/setting');
     }
     
+    public function testchart()
+    {
+        $setting = getSetting();
+
+        DB::table('test_chart')->insert([
+            'tegangan' => rand(1,240)/10,
+            'arus' => rand(1,120)/10,
+            'timestamps' => date('Y-m-d H:i:s')
+        ]);
+        
+        $get = DB::table('test_chart')->take($setting['max_data_in_graph'])->orderByDesc('id')->get();
+        
+        $labels = $get->pluck('timestamps')->toArray();
+        $tegangan = $get->pluck('tegangan')->toArray();
+        $arus = $get->pluck('arus')->toArray();
+        
+        $labels = array_reverse($labels);
+        $tegangan = array_reverse($tegangan);
+        $arus = array_reverse($arus);
+        
+        return response()->json([
+            'labels' => $labels,
+            'tegangan' => $tegangan,
+            'arus' => $arus
+        ]);
+    }
 }
