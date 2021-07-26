@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ArduinoController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
@@ -24,6 +25,12 @@ use App\Http\Controllers\UserController;
 //route auth
 Route::get('/', function () { return redirect('/login'); });
 Auth::routes();
+
+//route arduino
+Route::prefix('/arduino')->group(function () {
+    Route::get('/simpanMatahari',[ArduinoController::class,'sun']);
+    Route::get('/simpanAngin',[ArduinoController::class,'wind']);
+});
 
 //route dashboard
 Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth')->name('dashboard');
