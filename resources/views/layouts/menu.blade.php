@@ -43,22 +43,10 @@
     </ul>
 </li>
 
-<li class="c-sidebar-nav-dropdown">
-    <a class="c-sidebar-nav-dropdown-toggle" href="#">
+<li class="c-sidebar-nav-item">
+    <a class="c-sidebar-nav-link" href="{{ route('report') }}">
         <i class="c-sidebar-nav-icon fa fa-download"></i>Pelaporan
     </a>
-    <ul class="c-sidebar-nav-dropdown-items">
-        <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="#">
-                <i class="c-sidebar-nav-icon fa fa-file-excel"></i>Excel
-            </a>
-        </li>
-        <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="#">
-                <i class="c-sidebar-nav-icon fa fa-file-pdf"></i>PDF
-            </a>
-        </li>
-    </ul>
 </li>
 
 {{-- admin area --}}
@@ -82,11 +70,11 @@
         </ul>
     </li>
 
-    <li class="c-sidebar-nav-item">
+    {{-- <li class="c-sidebar-nav-item">
         <a class="c-sidebar-nav-link" href="#">
             <i class="c-sidebar-nav-icon fa fa-paperclip"></i>Log
         </a>
-    </li>
+    </li> --}}
     <li class="c-sidebar-nav-item">
         <a class="c-sidebar-nav-link" href="{{route('setting')}}">
             <i class="c-sidebar-nav-icon cil-settings"></i>Pengaturan

@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ArduinoController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SunDataController;
 use App\Http\Controllers\WindDataController;
@@ -23,6 +25,12 @@ use App\Http\Controllers\UserController;
 //route auth
 Route::get('/', function () { return redirect('/login'); });
 Auth::routes();
+
+//route arduino
+Route::prefix('/arduino')->group(function () {
+    Route::get('/simpanMatahari',[ArduinoController::class,'sun']);
+    Route::get('/simpanAngin',[ArduinoController::class,'wind']);
+});
 
 //route dashboard
 Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth')->name('dashboard');
@@ -62,9 +70,20 @@ Route::prefix('/data-staff')->middleware('auth')->group(function () {
     Route::delete('/',[UserController::class,'destroy'])->name('datastaff.delete');
 });
 
+//route pelaporan
+Route::prefix('/report')->middleware('auth')->group(function () {
+    Route::get('/',[ReportController::class,'index'])->name('report');
+    Route::post('/preview',[ReportController::class,'search'])->name('reportPreview');
+    Route::get('/excel/{type}/{start}/{end}',[ReportController::class,'excel'])->name('reportExcel');
+    Route::get('/pdf/{type}/{start}/{end}',[ReportController::class,'pdf'])->name('reportPDF');
+});
+//route log
+
+//route pengaturan aplikasi
 Route::prefix('/setting')->middleware('auth')->group(function () {
     Route::get('/',[SettingController::class,'index'])->name('setting');
     Route::post('/save',[SettingController::class,'save'])->name('saveSetting');
 });
 
 Route::get('/test',function () { return view('test'); })->name('test');
+Route::post('/test',[SettingController::class,'testchart'])->name('testchart');

@@ -17,7 +17,6 @@ class CreateMSunDataTable extends Migration
             $table->id();
             $table->string('data_id',10);
             $table->double('voltage');
-            $table->double('current');
             $table->double('lux');
             $table->timestamps();
             $table->unsignedBigInteger('main_data_id');

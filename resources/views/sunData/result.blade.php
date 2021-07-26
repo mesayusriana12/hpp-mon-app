@@ -12,12 +12,13 @@
 <script>
     var sunData = {!! json_encode($data) !!}
     
-    var renderSunChart1 = document.getElementById('sun-chart').getContext('2d');
+    var renderSunChart1 = document.getElementById('sun-chart');
     var sunChart1 = new Chart(renderSunChart1, {
         type: 'line',
         data: {
             labels: sunData.timestamp,
             datasets: [{
+                fill: true,
                 label: 'Tegangan (V)',
                 data: sunData.voltage,
                 borderColor: [
@@ -25,17 +26,11 @@
                 ],
                 borderWidth: 2
             },{
-                label: 'Arus (A)',
-                data: sunData.current,
-                borderColor: [
-                    'rgba(191, 85, 138, 1)',
-                ],
-                borderWidth: 2
-            },{
+                fill: true,
                 label: 'Lux (Lux)',
                 data: sunData.lux,
                 borderColor: [
-                    'rgba(54, 76, 151, 1)',
+                    'rgba(221, 77, 134, 1)',
                 ],
                 borderWidth: 2
             },
@@ -57,9 +52,8 @@
                     },
                     ticks: {
                         callback: function(value, index, values) {
-                            var get = this.getLabelForValue(value)
-                            var trimmed = get.slice(get.length - 8,(get.length - 3))
-                            console.log(trimmed);
+                            let get = this.getLabelForValue(value)
+                            let trimmed = get.slice(get.length - 8,(get.length - 3))
                             return trimmed;
                         }
                     }

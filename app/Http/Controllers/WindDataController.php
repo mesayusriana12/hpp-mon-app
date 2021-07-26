@@ -34,16 +34,14 @@ class WindDataController extends Controller
     public function ajaxGraph(Request $request){
         $setting = getSetting();
         $data = new stdClass();
-        $get_data = DB::table('m_wind_data')->latest()->take($setting['max_data_in_graph'])
-        ->select(['voltage','current','rpm','wind_speed','created_at'])
+        $get_data = MasterWindData::latest()->take($setting['max_data_in_graph'])
+        ->select(['voltage','wind_speed','created_at'])
         ->whereDate('created_at','>=',$request->date_start)
         ->whereDate('created_at','<=',$request->date_end)
         ->get();
 
         pushObjectDataTime($data,$get_data->pluck('created_at'),'timestamp');
         ($request->voltage == 'true' ? pushObjectData($data,$get_data->pluck('voltage'),'voltage') : '');
-        ($request->current == 'true' ? pushObjectData($data,$get_data->pluck('current'),'current') : '');
-        ($request->rpm == 'true' ? pushObjectData($data,$get_data->pluck('rpm'),'rpm',1000) : '');
         ($request->wind_speed == 'true' ? pushObjectData($data,$get_data->pluck('wind_speed'),'wind_speed') : '');
         
         return view('windData.result',[
@@ -60,8 +58,6 @@ class WindDataController extends Controller
         MasterWindData::create([
             'data_id' => 'A-' . rand(1,100),
             'voltage' => rand(1,240)/10,
-            'current' => rand(1,120)/10,
-            'rpm' => rand(1,64000),
             'wind_speed' => rand(1,500)/10,
             'main_data_id' => $lastId->id
         ]);

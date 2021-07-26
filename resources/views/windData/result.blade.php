@@ -12,12 +12,13 @@
 <script>
     var windData = {!! json_encode($data) !!}
     
-    var renderWindChart1 = document.getElementById('wind-chart').getContext('2d');
+    var renderWindChart1 = document.getElementById('wind-chart');
     var windChart1 = new Chart(renderWindChart1, {
         type: 'line',
         data: {
             labels: windData.timestamp,
             datasets: [{
+                fill: true,
                 label: 'Tegangan (V)',
                 data: windData.voltage,
                 borderColor: [
@@ -25,20 +26,7 @@
                 ],
                 borderWidth: 2
             },{
-                label: 'Arus (A)',
-                data: windData.current,
-                borderColor: [
-                    'rgba(191, 85, 138, 1)',
-                ],
-                borderWidth: 2
-            },{
-                label: 'RPM',
-                data: windData.rpm,
-                borderColor: [
-                    'rgba(54, 76, 151, 1)',
-                ],
-                borderWidth: 2
-            },{
+                fill: true,
                 label: 'Kec. Angin (m/s)',
                 data: windData.wind_speed,
                 borderColor: [
@@ -65,8 +53,8 @@
                     },
                     ticks: {
                         callback: function(value, index, values) {
-                            var get = this.getLabelForValue(value)
-                            var trimmed = get.slice(get.length - 8,(get.length - 3))
+                            let get = this.getLabelForValue(value)
+                            let trimmed = get.slice(get.length - 8,(get.length - 3))
                             return trimmed;
                         }
                     }

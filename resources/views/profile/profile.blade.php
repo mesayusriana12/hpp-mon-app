@@ -98,7 +98,7 @@
                         <div class="text-center">
                             <label for="upload_image" id="overlay-img">
                                 <img id='uploaded_image' src="{{ asset('images/profile_picture/'.Auth::user()->profile_picture)}}" alt="Profile Picture" width="230px" style="border:1px solid gray; cursor:pointer">
-                                <input type="file" name="image" class="image" id="upload_image" style="display: none">
+                                <input type="file" name="image" class="image" id="upload_image" style="display: none" accept="image/*">
                             </label>
                             <div class="text-muted">Klik foto untuk merubah foto profil!</div>
                         </div>
