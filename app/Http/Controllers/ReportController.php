@@ -13,8 +13,8 @@ class ReportController extends Controller
         return view('report.index');
     }
 
-    public function search(Request $request){
-
+    public function search(Request $request)
+    {
         $data = [];
         $info_sun = [];
         $info_wind = [];

@@ -14,8 +14,14 @@ class DashboardController extends Controller
     public function index()
     {   
         $setting = getSetting();
+        
+        // $last_sun_data = MasterSunData::orderByDesc('id')->first();
+        // $last_wind_data = MasterWindData::orderByDesc('id')->first();
 
+        // $optimal = ($last_sun_data->voltage > $last_wind_data->voltage ? 'Mathari' : 'Angin');
+        
         return view('dashboard.dashboard',[
+            // 'optimal' => $optimal,
             'delay' => ($setting['delay_on_dashboard'] * 1000)
         ]);
     }

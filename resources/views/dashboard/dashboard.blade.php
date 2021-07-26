@@ -15,6 +15,30 @@
 @endsection
 
 @section('content')
+    {{-- <div class="row">
+        <div class="col-sm-6 col-md-6">
+            <div class="card text-white bg-info">
+                <div class="card-body">
+                    <div class="text-muted text-right">
+                        <i class="fa fa-bolt fa-3x"></i>
+                    </div>
+                    <div class="text-value-lg"> {{ $optimal }} </div>
+                    <small class="text-muted text-uppercase font-weight-bold">Tegangan terbesar</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6">
+            <div class="card text-white bg-success">
+                <div class="card-body">
+                    <div class="text-muted text-right">
+                        <i class="fa fa-clock fa-3x"></i>
+                    </div>
+                    <div class="text-value-lg"> cek cek </div>
+                    <small class="text-muted text-uppercase font-weight-bold">Data terbaru tercatat</small>
+                </div>
+            </div>
+        </div>
+    </div> --}}
     <div class="row">
         <div class="col-sm-12 col-md-12">
             <div class="card card-accent-primary">

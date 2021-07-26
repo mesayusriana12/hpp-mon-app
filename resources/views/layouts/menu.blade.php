@@ -69,12 +69,7 @@
             </li>
         </ul>
     </li>
-
-    {{-- <li class="c-sidebar-nav-item">
-        <a class="c-sidebar-nav-link" href="#">
-            <i class="c-sidebar-nav-icon fa fa-paperclip"></i>Log
-        </a>
-    </li> --}}
+    
     <li class="c-sidebar-nav-item">
         <a class="c-sidebar-nav-link" href="{{route('setting')}}">
             <i class="c-sidebar-nav-icon cil-settings"></i>Pengaturan

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Data | Matahari')
+@section('title','Data Matahari')
 
 @section('breadcrumb')
     <nav aria-label="breadcrumb">
