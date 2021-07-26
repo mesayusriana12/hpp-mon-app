@@ -34,6 +34,8 @@ Route::prefix('/arduino')->group(function () {
 
 //route dashboard
 Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth')->name('dashboard');
+Route::post('/ajaxRealtimeSun', [DashboardController::class,'ajaxRealtimeSun'])->middleware('auth')->name('ajaxRTS');
+Route::post('/ajaxRealtimeWind', [DashboardController::class,'ajaxRealtimeWind'])->middleware('auth')->name('ajaxRTW');
 
 //route profile
 Route::prefix('/profile')->middleware('auth')->group(function () {
@@ -45,7 +47,6 @@ Route::prefix('/profile')->middleware('auth')->group(function () {
 //route data matahari
 Route::prefix('/sun-data')->middleware('auth')->group(function () {
     Route::get('/',[SunDataController::class,'index'])->name('viewSunData');
-    Route::get('/test',[SunDataController::class,'test'])->name('insertDummySun');
     Route::delete('/',[SunDataController::class,'delete'])->name('deleteSunData');
     Route::get('/graph',[SunDataController::class,'graph'])->name('viewGraphSun');
     Route::post('/graph',[SunDataController::class,'ajaxGraph'])->name('ajaxGraphSun');
@@ -54,7 +55,6 @@ Route::prefix('/sun-data')->middleware('auth')->group(function () {
 //route data angin
 Route::prefix('/wind-data')->middleware('auth')->group(function () {
     Route::get('/',[WindDataController::class,'index'])->name('viewWindData');
-    Route::get('/test',[WindDataController::class,'test'])->name('insertDummyWind');
     Route::delete('/',[WindDataController::class,'delete'])->name('deleteWindData');
     Route::get('/graph',[WindDataController::class,'graph'])->name('viewGraphWind');
     Route::post('/graph',[WindDataController::class,'ajaxGraph'])->name('ajaxGraphWind');
@@ -74,7 +74,6 @@ Route::prefix('/data-staff')->middleware('auth')->group(function () {
 Route::prefix('/report')->middleware('auth')->group(function () {
     Route::get('/',[ReportController::class,'index'])->name('report');
     Route::post('/preview',[ReportController::class,'search'])->name('reportPreview');
-    Route::get('/excel/{type}/{start}/{end}',[ReportController::class,'excel'])->name('reportExcel');
     Route::get('/pdf/{type}/{start}/{end}',[ReportController::class,'pdf'])->name('reportPDF');
 });
 //route log
@@ -84,6 +83,3 @@ Route::prefix('/setting')->middleware('auth')->group(function () {
     Route::get('/',[SettingController::class,'index'])->name('setting');
     Route::post('/save',[SettingController::class,'save'])->name('saveSetting');
 });
-
-Route::get('/test',function () { return view('test'); })->name('test');
-Route::post('/test',[SettingController::class,'testchart'])->name('testchart');

@@ -15,9 +15,7 @@
         "infyomlabs/laravel-ui-coreui": "2.0",
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
-        "maatwebsite/excel": "^3.1",
-        "realrashid/sweet-alert": "^3.2",
-        "spatie/laravel-activitylog": "^3.17"
+        "realrashid/sweet-alert": "^3.2"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('title','Dashboard')
 
+@push('page_css')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endpush
+
 @section('breadcrumb')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb border-0 m-0">
@@ -11,6 +15,30 @@
 @endsection
 
 @section('content')
+    {{-- <div class="row">
+        <div class="col-sm-6 col-md-6">
+            <div class="card text-white bg-info">
+                <div class="card-body">
+                    <div class="text-muted text-right">
+                        <i class="fa fa-bolt fa-3x"></i>
+                    </div>
+                    <div class="text-value-lg"> {{ $optimal }} </div>
+                    <small class="text-muted text-uppercase font-weight-bold">Tegangan terbesar</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-6">
+            <div class="card text-white bg-success">
+                <div class="card-body">
+                    <div class="text-muted text-right">
+                        <i class="fa fa-clock fa-3x"></i>
+                    </div>
+                    <div class="text-value-lg"> cek cek </div>
+                    <small class="text-muted text-uppercase font-weight-bold">Data terbaru tercatat</small>
+                </div>
+            </div>
+        </div>
+    </div> --}}
     <div class="row">
         <div class="col-sm-12 col-md-12">
             <div class="card card-accent-primary">
@@ -42,24 +70,24 @@
 @endsection
 @push('page_scripts')
     <script>
-        var sunData = {!! json_encode($sundata) !!}
-        var windData = {!! json_encode($winddata) !!}
 
         var renderSunChart1 = document.getElementById('sun-chart1').getContext('2d');
         var sunChart1 = new Chart(renderSunChart1, {
             type: 'line',
             data: {
-                labels: sunData.timestamp,
+                labels: [],
                 datasets: [{
-                    label: 'Tegangan',
-                    data: sunData.voltage,
+                    fill: true,
+                    label: 'Tegangan (V)',
+                    data: [],
                     borderColor: [
                         'rgba(69, 173, 250, 1)',
                     ],
                     borderWidth: 2
                 },{
-                    label: 'Arus',
-                    data: sunData.current,
+                    fill: true,
+                    label: 'Lux (Lux)',
+                    data: [],
                     borderColor: [
                         'rgba(191, 85, 138, 1)',
                     ],
@@ -96,17 +124,19 @@
         var windChart1 = new Chart(renderWindChart1, {
             type: 'line',
             data: {
-                labels: windData.timestamp,
+                labels: [],
                 datasets: [{
-                    label: 'Tegangan',
-                    data: windData.voltage,
+                    fill: true,
+                    label: 'Tegangan (V)',
+                    data: [],
                     borderColor: [
                         'rgba(154, 168, 58, 1)',
                     ],
                     borderWidth: 2
                 },{
-                    label: 'Arus',
-                    data: windData.current,
+                    fill: true,
+                    label: 'Kecepatan Angin (m/s)',
+                    data: [],
                     borderColor: [
                         'rgba(255, 203, 19, 1)',
                     ],
@@ -138,5 +168,52 @@
                 },  
             }
         });
+
+        var updateChart1 = function(){
+            $.ajax({
+                url: "{{ route('ajaxRTS') }}",
+                type: 'POST',
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(data){
+                    sunChart1.data.labels = data.labels;
+                    sunChart1.data.datasets[0].data = data.voltage;
+                    sunChart1.data.datasets[1].data = data.lux;
+                    sunChart1.update();
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            });
+        }
+
+        var updateChart2 = function(){
+            $.ajax({
+                url: "{{ route('ajaxRTW') }}",
+                type: 'POST',
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(data){
+                    windChart1.data.labels = data.labels;
+                    windChart1.data.datasets[0].data = data.voltage;
+                    windChart1.data.datasets[1].data = data.wind_speed;
+                    windChart1.update();
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            });
+        }
+
+        updateChart1();
+        updateChart2();
+        setInterval(() => {
+            updateChart1();
+            updateChart2();
+        }, {{ $delay }});
     </script>
 @endpush

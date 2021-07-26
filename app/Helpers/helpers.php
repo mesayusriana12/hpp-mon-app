@@ -56,6 +56,31 @@
         return $data_array;
     }
 
+    function pushArrayData($insert_data, $divide_by = null) {
+        $length = count($insert_data) - 1;
+        $temp = array();
+        for ($i = 0; $i < count($insert_data); $i++) { 
+            $temp[$i] = ($divide_by ? ($insert_data[$length] / $divide_by) : $insert_data[$length]);
+            $length--;
+        }
+        return $temp;
+    }
+
+    function pushArrayDataTime($insert_data) {
+        $length = count($insert_data) - 1;
+        $temp = array();
+        for ($i = 0; $i < count($insert_data); $i++) { 
+            $get_data = $insert_data[$length];
+            $get_date = explode(' ', $get_data)[0];
+            $get_time = explode(' ', $get_data)[1];
+            $formated_time = indonesian_date($get_date) . ' | ' . $get_time;
+            $temp[$i] = $formated_time;
+            $length--;
+        }
+        
+        return $temp;
+    }
+
     function getSetting(){
         $get_setting = DB::table('settings')->get();
         foreach ($get_setting as $item) {
