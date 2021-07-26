@@ -66,11 +66,6 @@ class ReportController extends Controller
         ]);
     }
 
-    public function excel()
-    {
-
-    }
-
     public function pdf($type, $start, $end)
     {
         $data = [];
