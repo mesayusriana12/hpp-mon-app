@@ -50,17 +50,4 @@ class WindDataController extends Controller
             'data' => $data
         ]);
     }
-    
-    public function test(){
-        $lastId = DB::table('m_main_data')->orderByDesc('id')->first();
-        $lastId->id++;
-        DB::table('m_main_data')->insert(['id' => $lastId->id]);
-        MasterWindData::create([
-            'data_id' => 'A-' . rand(1,100),
-            'voltage' => rand(1,240)/10,
-            'wind_speed' => rand(1,500)/10,
-            'main_data_id' => $lastId->id
-        ]);
-        return redirect('/wind-data');
-    }
 }

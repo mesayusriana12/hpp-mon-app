@@ -86,7 +86,7 @@
                     borderWidth: 2
                 },{
                     fill: true,
-                    label: 'Lux (Lux)',
+                    label: 'Lux (Lux) * 10',
                     data: [],
                     borderColor: [
                         'rgba(191, 85, 138, 1)',

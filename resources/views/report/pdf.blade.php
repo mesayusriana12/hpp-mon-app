@@ -44,8 +44,8 @@
                 @foreach ($data['sun'] as $item)
                     <tr>
                         <td class="text-center">{{ $item->sun_id }}</td>
-                        <td class="text-center">{{ $item->voltage }}</td>
-                        <td class="text-center">{{ $item->lux }}</td>
+                        <td class="text-center">{{ $item->voltage }} V</td>
+                        <td class="text-center">{{ $item->lux }} Lux</td>
                         <td class="text-center">{{ indonesian_date($item->recorded_at, true) }}</td>
                     </tr>
                 @endforeach
@@ -77,7 +77,7 @@
                             <tr>
                                 <td>Rata-rata Tegangan</td>
                                 <td>:</td>
-                                <td>{{ $info_sun['avg_voltage_value'] }}</td>
+                                <td>{{ round($info_sun['avg_voltage_value'], 2) }}</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
@@ -85,7 +85,7 @@
                             <tr>
                                 <td>Rata-rata Lux</td>
                                 <td>:</td>
-                                <td>{{ $info_sun['avg_lux_value'] }}</td>
+                                <td>{{ round($info_sun['avg_lux_value'], 2) }}</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
@@ -117,7 +117,7 @@
                 @foreach ($data['wind'] as $item)
                     <tr>
                         <td class="text-center">{{ $item->wind_id }}</td>
-                        <td class="text-center">{{ $item->voltage }}</td>
+                        <td class="text-center">{{ $item->voltage }} V </td>
                         <td class="text-center">{{ $item->wind_speed }} <sup>m/s</sup></td>
                         <td class="text-center">{{ indonesian_date($item->recorded_at, true) }}</td>
                     </tr>
@@ -150,7 +150,7 @@
                             <tr>
                                 <td>Rata-rata Tegangan</td>
                                 <td>:</td>
-                                <td>{{ $info_wind['avg_voltage_value'] }}</td>
+                                <td>{{ round($info_wind['avg_voltage_value'], 2) }}</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
@@ -158,7 +158,7 @@
                             <tr>
                                 <td>Rata-rata Kec. Angin</td>
                                 <td>:</td>
-                                <td>{{ $info_wind['avg_ws_value'] }} <sup>m/s</sup></td>
+                                <td>{{ round($info_wind['avg_ws_value'], 2) }} <sup>m/s</sup></td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>
                                 <td>&nbsp;</td>

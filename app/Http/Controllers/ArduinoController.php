@@ -14,13 +14,11 @@ class ArduinoController extends Controller
         $lastId->id++;
         DB::table('m_main_data')->insert(['id' => $lastId->id]);
 
-        $lastRowSun = MasterSunData::orderBy('data_id','desc')->first();
-        $lastIdSun = $lastRowSun->data_id;
-        $split = explode('-', $lastIdSun)[1];
-        $split++;
+        $lastRowSun = MasterSunData::count();
+        $lastRowSun++;
         
         MasterSunData::create([
-            'data_id' => 'M-' . $split,
+            'data_id' => 'M-' . $lastRowSun,
             'voltage' => $request->teganganPanel1,
             'lux' => $request->lux,
             'main_data_id' => $lastId->id
@@ -32,13 +30,11 @@ class ArduinoController extends Controller
         $lastId->id++;
         DB::table('m_main_data')->insert(['id' => $lastId->id]);
 
-        $lastRowWind = MasterWindData::orderBy('data_id','desc')->first();
-        $lastIdWind = $lastRowWind->data_id;
-        $split = explode('-', $lastIdWind)[1];
-        $split++;
+        $lastRowWind = MasterWindData::count();
+        $lastRowWind++;
         
         MasterWindData::create([
-            'data_id' => 'A-' . $split,
+            'data_id' => 'A-' . $lastRowWind,
             'voltage' => $request->teganganBaling1,
             'wind_speed' => $request->kecepatan,
             'main_data_id' => $lastId->id

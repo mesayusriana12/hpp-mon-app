@@ -19,7 +19,6 @@ class DashboardController extends Controller
         // $last_wind_data = MasterWindData::orderByDesc('id')->first();
 
         // $optimal = ($last_sun_data->voltage > $last_wind_data->voltage ? 'Mathari' : 'Angin');
-        
         return view('dashboard.dashboard',[
             // 'optimal' => $optimal,
             'delay' => ($setting['delay_on_dashboard'] * 1000)
@@ -33,7 +32,7 @@ class DashboardController extends Controller
         
         $labels = pushArrayDataTime($get_sun_data->pluck('created_at'));
         $voltage = pushArrayData($get_sun_data->pluck('voltage'));
-        $lux = pushArrayData($get_sun_data->pluck('lux'), 1000);
+        $lux = pushArrayData($get_sun_data->pluck('lux'),10);
         
         return response()->json([
             'labels' => $labels,

@@ -50,6 +50,14 @@
                                 @error('delay_on_dashboard') <div class="invalid-feedback">Mohon isi hanya dengan angka.</div> @enderror
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="lux_divider">Pembagi Lux pada grafik : </label>
+                            <div class="col-md-9">
+                                <input class="form-control @error('lux_divider') is-invalid @enderror setting-form" id="lux_divider" name="lux_divider"
+                                type="number" placeholder="Pembagi nilai lux pada grafik untuk mempermudah pembacaan data" value="{{ $setting['lux_divider'] }}">
+                                @error('lux_divider') <div class="invalid-feedback">Mohon isi hanya dengan angka.</div> @enderror
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="card-footer">

@@ -5,6 +5,7 @@
         </div>
         <div class="card-body">
             <canvas id="sun-chart" width="400" height="100"></canvas>
+            <div class="text-center text-info">{{ $info }}</div>
         </div>
     </div>
 </div>

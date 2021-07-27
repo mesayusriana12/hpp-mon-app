@@ -42,25 +42,16 @@ class SunDataController extends Controller
 
         pushObjectDataTime($data,$get_data->pluck('created_at'),'timestamp');
         ($request->voltage == 'true' ? pushObjectData($data,$get_data->pluck('voltage'),'voltage') : '');
-        ($request->lux == 'true' ? pushObjectData($data,$get_data->pluck('lux'),'lux',1000) : '');
+        ($request->lux == 'true' ? pushObjectData($data,$get_data->pluck('lux'),'lux', $setting['lux_divider']) : '');
         
+        $info =  'Hasil pengukuran lux dibagi ' . $setting['lux_divider'] . ' untuk mempermudah pembacaan data.
+                    Untuk nilai aslinya cukup dikalikan ' . $setting['lux_divider'];
+
         return view('sunData.result',[
             'start' => $request->date_start,
             'end' => $request->date_end,
-            'data' => $data
+            'data' => $data,
+            'info' => $info
         ]);
-    }
-    
-    public function test(){
-        $lastId = DB::table('m_main_data')->orderByDesc('id')->first();
-        $lastId->id++;
-        DB::table('m_main_data')->insert(['id' => $lastId->id]);
-        MasterSunData::create([
-            'data_id' => 'M-' . rand(1,100),
-            'voltage' => rand(1,240)/10,
-            'lux' => rand(1,1000000)/10,
-            'main_data_id' => $lastId->id
-        ]);
-        return redirect('/sun-data');
     }
 }
