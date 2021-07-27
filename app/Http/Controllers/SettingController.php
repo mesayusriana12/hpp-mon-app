@@ -19,7 +19,8 @@ class SettingController extends Controller
     {
         $request->validate([
             'max_data_in_graph' => 'numeric',
-            'delay_on_dashboard' => 'numeric'
+            'delay_on_dashboard' => 'numeric',
+            'lux_divider' => 'numeric'
         ]);
         
         if ($request->has('max_data_in_graph')) {
@@ -30,6 +31,10 @@ class SettingController extends Controller
             Setting::where('name','delay_on_dashboard')->update(['value' => $request->delay_on_dashboard]);
         }
 
+        if ($request->has('lux_divider')) {
+            Setting::where('name','lux_divider')->update(['value' => $request->lux_divider]);
+        }
+
         Alert::toast('Pengaturan berhasil diupdate!','success')
         ->position('center')
         ->timerProgressBar();
@@ -37,30 +42,4 @@ class SettingController extends Controller
         return redirect('/setting');
     }
     
-    public function testchart()
-    {
-        $setting = getSetting();
-
-        DB::table('test_chart')->insert([
-            'tegangan' => rand(1,240)/10,
-            'arus' => rand(1,120)/10,
-            'timestamps' => date('Y-m-d H:i:s')
-        ]);
-        
-        $get = DB::table('test_chart')->take($setting['max_data_in_graph'])->orderByDesc('id')->get();
-        
-        $labels = $get->pluck('timestamps')->toArray();
-        $tegangan = $get->pluck('tegangan')->toArray();
-        $arus = $get->pluck('arus')->toArray();
-        
-        $labels = array_reverse($labels);
-        $tegangan = array_reverse($tegangan);
-        $arus = array_reverse($arus);
-        
-        return response()->json([
-            'labels' => $labels,
-            'tegangan' => $tegangan,
-            'arus' => $arus
-        ]);
-    }
 }

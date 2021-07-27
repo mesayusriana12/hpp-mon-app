@@ -14,10 +14,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset('plugins/sweetalert2/css/sweetalert2.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/bootstrap-datepicker/css/bootstrap-datepicker.css')}}">
+    <link rel="stylesheet" href="{{asset('plugins/datatables/css/datatables.min.css')}}"  type="text/css">
 @endsection
 
 @push('page_css')
     <style>
+        div.dataTables_wrapper div.dataTables_length select{
+            width: 60px
+        }
         @media print {
             #sun_export {page-break-after: always;}
         }
@@ -76,6 +80,7 @@
 @section('third_party_scripts')
     <script src="{{ asset('plugins/sweetalert2/js/sweetalert2.all.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('plugins/bootstrap-datepicker/js/bootstrap-datepicker.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('plugins/datatables/js/datatables.min.js') }}" type="text/javascript"></script>
 @endsection
 
 @push('page_scripts')
